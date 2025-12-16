@@ -1,0 +1,5 @@
+{
+  "name": "实时 HTML 编辑器",
+  "description": "一个纯前端的实时 HTML/CSS 代码编辑器，支持即时预览和导出。",
+  "requestFramePermissions": []
+}
