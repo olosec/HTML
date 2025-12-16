@@ -6,76 +6,24 @@ import { useDebounce } from './hooks/useDebounce';
 import { Header } from './components/Header';
 import { Code, Eye, Monitor, Smartphone, FileCode, Palette } from 'lucide-react';
 
-const DEFAULT_HTML = `<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>我的网页</title>
-</head>
-<body>
-  <div class="card">
-    <h1>你好，世界</h1>
-    <p>欢迎使用实时编辑器。</p>
-    <p>在左侧尝试修改代码吧！</p>
-    <button class="button" onclick="alert('你点击了按钮！')">点击我</button>
-  </div>
-</body>
-</html>`;
+const DEFAULT_HTML = ``;
 
-const DEFAULT_CSS = `body {
-  font-family: system-ui, -apple-system, sans-serif;
-  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-  color: white;
-  height: 100vh;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.card {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 2rem;
-  border-radius: 1rem;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  text-align: center;
-  max-width: 400px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-}
-
-h1 { margin-top: 0; }
-
-.button {
-  background: #3b82f6;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  font-weight: bold;
-  margin-top: 1rem;
-  transition: background 0.2s;
-}
-
-.button:hover {
-  background: #2563eb;
-}`;
+const DEFAULT_CSS = ``;
 
 const TAG_REFERENCES = [
-  { tag: '<html>', desc: 'HTML 文档的根元素' },
-  { tag: '<head>', desc: '包含文档的元数据（如标题、编码）' },
-  { tag: '<title>', desc: '定义网页标题（浏览器标签页显示）' },
-  { tag: '<body>', desc: '定义文档的主体，包含所有可见内容' },
-  { tag: '<h1>-<h6>', desc: '标题标签，<h1> 最大，<h6> 最小' },
-  { tag: '<p>', desc: '定义段落' },
-  { tag: '<img>', desc: '定义图像，使用 src 属性指定路径' },
-  { tag: '<a>', desc: '定义超链接，使用 href 属性跳转' },
-  { tag: '<div>', desc: '块级容器，常用于布局' },
-  { tag: '<span>', desc: '行内容器，用于文本样式' },
-  { tag: '<button>', desc: '定义可点击的按钮' },
-  { tag: '<ul>/<li>', desc: '无序列表和列表项' },
+  { tag: '<html></html>', desc: 'HTML 文档的根元素' },
+  { tag: '<head></head>', desc: '包含文档的元数据' },
+  { tag: '<title></title>', desc: '定义网页标题' },
+  { tag: '<body></body>', desc: '定义文档的主体' },
+  { tag: '<h1></h1>', desc: '标题标签 (h1-h6)' },
+  { tag: '<p></p>', desc: '定义段落' },
+  { tag: '<img />', desc: '定义图像 (单标签)' },
+  { tag: '<a></a>', desc: '定义超链接' },
+  { tag: '<div></div>', desc: '块级容器布局' },
+  { tag: '<span></span>', desc: '行内文本容器' },
+  { tag: '<button></button>', desc: '定义按钮' },
+  { tag: '<ul></ul>', desc: '无序列表' },
+  { tag: '<li></li>', desc: '列表项' },
 ];
 
 export default function App() {
@@ -104,7 +52,7 @@ export default function App() {
   }, []);
 
   const handleReset = () => {
-    if (window.confirm('确定要重置代码到默认状态吗？')) {
+    if (window.confirm('确定要清空所有代码吗？')) {
       setHtml(DEFAULT_HTML);
       setCss(DEFAULT_CSS);
     }
@@ -214,7 +162,7 @@ export default function App() {
               <div className="grid grid-cols-1 gap-2">
                 {TAG_REFERENCES.map((item, index) => (
                   <div key={index} className="flex gap-2 items-baseline">
-                    <span className="text-blue-400 font-bold min-w-[80px]">{item.tag}</span>
+                    <span className="text-blue-400 font-bold min-w-[100px]">{item.tag}</span>
                     <span className="text-slate-400">{item.desc}</span>
                   </div>
                 ))}
@@ -256,7 +204,7 @@ export default function App() {
             <div className="flex-1 overflow-y-auto p-4 text-xs font-mono">
               {TAG_REFERENCES.map((item, index) => (
                 <div key={index} className="flex gap-2 mb-1">
-                  <span className="text-blue-400 font-bold min-w-[70px]">{item.tag}</span>
+                  <span className="text-blue-400 font-bold min-w-[90px]">{item.tag}</span>
                   <span className="text-slate-400 truncate">{item.desc}</span>
                 </div>
               ))}
