@@ -6,7 +6,14 @@ import { useDebounce } from './hooks/useDebounce';
 import { Header } from './components/Header';
 import { Code, Eye, Monitor, Smartphone, FileCode, Palette } from 'lucide-react';
 
-const DEFAULT_HTML = ``;
+const DEFAULT_HTML = `<html>
+<head>
+
+</head>
+<body>
+
+</body>
+</html>`;
 
 const DEFAULT_CSS = ``;
 
